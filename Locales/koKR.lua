@@ -24,6 +24,7 @@ L["Quick Slot Layout"] = "배치 방식";
 L["Quick Slot Layout Linear"] = "직선형";
 L["Quick Slot Layout Radial"] = "원형";
 L["Restriction Combat"] = "전투 중에는 작동하지 않습니다.";  --Indicate a feature can only work when out of combat
+L["Restriction Instance"] = "이 기능은 인스턴스에서는 작동하지 않습니다.";
 L["Map Pin Change Size Method"] = "\n\n*세계 지도 > 지도 필터 > Plumber에서 핀 크기를 변경";
 L["Toggle Plumber UI"] = "Plumber UI 전환";
 L["Toggle Plumber UI Tooltip"] = "편집 모드에서 다음 Plumber UI를 표시합니다:\n\n%s\n\n이 체크박스는 편집 모드에서의 UI 표시 여부만 제어합니다.\n이 모듈들을 활성화하거나 비활성화하지는 않습니다.";
@@ -383,6 +384,16 @@ L["Click To Disable"] = "클릭하여 비활성화";
 --NameplateWidget
 L["ModuleName NameplateWidget"] = "이름표: 열쇠창";
 L["ModuleDescription NameplateWidget"] = "광휘의 잔재 보유 수 이름표에 표시.";
+
+
+--NameplateQuestIndicator
+L["ModuleName NameplateQuest"] = "이름표: 퀘스트 표시기";
+L["ModuleDescription NameplateQuest"] = "이름표에 퀘스트 표시기를 보여줍니다.\n\n- (선택) 대상의 퀘스트 목표 진행 상황을 표시합니다.\n\n- (선택) 파티원이 목표를 완료하지 않았을 경우 퀘스트 표시기를 보여줍니다.";
+L["NameplateQuest ShowPartyQuest"] = "파티원의 퀘스트 표시";
+L["NameplateQuest ShowPartyQuest Tooltip"] = "파티원 중 한 명이 퀘스트 목표를 완료하지 않았을 경우 %s 마커를 표시합니다.";
+L["NameplateQuest ShowTargetProgress"] = "대상의 진행 상황 표시";
+L["NameplateQuest ShowTargetProgress Tooltip"] = "대상의 이름표에 퀘스트 목표 진행 상황을 표시합니다.";
+L["NameplateQuest Instruction Find Nameplate"] = "아이콘 위치를 조정하려면 NPC 이름표가 보이는 장소로 이동하세요.";
 
 
 --PartyInviterInfo
