@@ -16,10 +16,9 @@
 
 	<Script file="Retail/ItemUpgradeFrame.lua"/>
 	<Script file="Retail/ActivityUtil.lua"/>
+	<Script file="Retail/ResourceList.lua"/>
 	<Script file="Retail/TWW_Activity.lua"/>
-	<Script file="Retail/TWW_ResourceList.lua"/>
 	<Script file="Retail/MID_Activity.lua"/>
-	<Script file="Retail/MID_ResourceList.lua"/>
 
 	<!--Include file="LegionRemix/LegionRemix.xml"/-->
 

@@ -203,12 +203,14 @@ do
     function CurrencyButtonMixin:UpdateVisual()
         if self:IsMouseMotionFocus() then
             self.Name:SetTextColor(1, 1, 1);
+            self.Background:Show();
         else
             if self.anyOwned then
                 self.Name:SetTextColor(0.922, 0.871, 0.761);
             else
                 self.Name:SetTextColor(0.5, 0.5, 0.5);
             end
+            self.Background:Hide();
         end
     end
 end
@@ -238,6 +240,13 @@ local function CreateButton(parent)
 
     f.Background = f:CreateTexture(nil, "BACKGROUND");
     f.Background:SetAllPoints(true);
+    f.Background:Hide();
+    f.Background:SetTextureSliceMode(1);
+    local m = 8;
+    f.Background:SetTextureSliceMargins(m, m, m, m);
+    f.Background:SetTexture("Interface/AddOns/Plumber/Art/ExpansionLandingPage/SmallListButtonHighlight");
+    f.Background:SetBlendMode("ADD");
+    f.Background:SetAlpha(0.08);
 
     f:SetScript("OnEnter", f.OnEnter);
     f:SetScript("OnLeave", f.OnLeave);
@@ -443,6 +452,7 @@ function LandingPageUtil.CreateCurrencyList(parent)
     ScrollView:Hide();
     ScrollView:SetPoint("TOPLEFT", f, "TOPLEFT", 0, 0);
     ScrollView:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", 0, 0);
+    ScrollView:MinimizeScrollBar(true);
     ScrollView:OnSizeChanged();
     ScrollView:SetAlwaysShowScrollBar(false);
     ScrollView:SetSmartClipsChildren(true);
@@ -458,7 +468,7 @@ function LandingPageUtil.CreateCurrencyList(parent)
 
     local function CurrencyButton_OnAcquired(obj)
         if ScrollView:IsScrollable() then
-            obj:SetWidth(BUTTON_WIDTH - 20);
+            obj:SetWidth(BUTTON_WIDTH - 10);
         else
             obj:SetWidth(BUTTON_WIDTH);
         end

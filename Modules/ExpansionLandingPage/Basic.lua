@@ -530,7 +530,15 @@ do  --Atlas
         [2685] = {640, 768, 0, 128},      --Gallagio Loyalty Rewards Club
         [2688] = {768, 896, 0, 128},      --Flame's Radiance
         [2658] = {896, 1024, 0, 128},     --The K'aresh Trust
-        [2736] = {0  , 128, 256, 384},    --Manaforge Vandals Debug
+        [2736] = {0  , 128, 256, 384},    --Manaforge Vandals
+
+        [2710] = {128, 256, 256, 384},    --Silvermoon Court
+        [2696] = {256, 384, 256, 384},    --Amani Tribe
+        [2704] = {384, 512, 256, 384},    --Hara'ti
+        [2699] = {512, 640, 256, 384},    --The Singularity
+
+        [2764] = {640, 768, 256, 384},    --Prey
+        [2742] = {768, 896, 256, 384},    --Delves
     };
 
     local function SetTextureDimension(textureObject, file, width, height, l, r, t, b, useTrilinearFilter)
@@ -1705,11 +1713,13 @@ do  --Expansion Select
         if v then
             CurrentExpansionID = expansionID;
             local cb = addon.CallbackRegistry;
+            cb:Trigger("LandingPage.SetFactionLayout", v.factionLayout);
             cb:Trigger("LandingPage.SetActivityData", v.activity);
             cb:Trigger("LandingPage.SetActivityQuestMaps", v.activityQuestMap);
             cb:Trigger("LandingPage.SetEncounterTabInfo", v.encounter);
             cb:Trigger("LandingPage.SetResourceList", v.resource);
             cb:Trigger("LandingPage.ExpansionChanged", expansionID);
+            cb:Trigger("LandingPage.UpdateNotification");
         end
     end
 
