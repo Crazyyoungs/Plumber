@@ -60,7 +60,7 @@ local function GetProgressText(str)
                     return format("%.0f", required - completed);
                 end
             else
-                local percent = match(str, "%d+%%");
+                local percent = match(str, "(%d+)%%");
                 if percent and percent < 100 then
                     return format("%.0f%%", 100 - percent);
                 end
