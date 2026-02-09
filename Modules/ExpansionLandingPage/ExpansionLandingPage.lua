@@ -158,12 +158,24 @@ do  --Expansion Select
 
     function ExpansionSelectButtonMixin:Refresh()
         self.Name:SetText(LandingPageUtil.GetCurrentExpansionInfo());
-        local width = math.floor(math.max(self.Name:GetWrappedWidth() + self.extraWidth, Def.TabButtonHeight));
-        if width > self.minWidth then
-            self.minWidth = width;
-        end
-        self:SetWidth(self.minWidth);
         self:SetShown(#LandingPageUtil.GetAvailableExpansions() > 1);
+    end
+
+    function ExpansionSelectButtonMixin:AdjustToMaxTextWidth()
+        local names = LandingPageUtil.GetAllExpansionNames();
+        local extraWidth = Def.TabButtonTextOffset + 18;
+        local minWidth = 2*Def.TabButtonHeight;
+        for _, name in ipairs(names) do
+            if name then
+                self.Name:SetText(name);
+                local width = math.floor(math.max(self.Name:GetWrappedWidth() + extraWidth, Def.TabButtonHeight));
+                if width > minWidth then
+                    minWidth = width;
+                end
+            end
+        end
+        self:SetWidth(minWidth);
+        self.Name:SetText(nil);
     end
 
     function CreateExpansionSelectButton(parent)
@@ -187,8 +199,7 @@ do  --Expansion Select
         button.Arrow:SetTexture("Interface/AddOns/Plumber/Art/ExpansionLandingPage/ChecklistButton.tga", nil, nil, "TRILINEAR");
         button.Arrow:SetTexCoord(0, 48/512, 208/512, 256/512);
 
-        button.extraWidth = Def.TabButtonTextOffset + 18;
-        button.minWidth = 2*Def.TabButtonHeight;
+        button:AdjustToMaxTextWidth();
 
         CallbackRegistry:Register("LandingPage.ExpansionChanged", function(expansionID)
             button:Refresh();

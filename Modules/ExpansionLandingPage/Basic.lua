@@ -1736,6 +1736,14 @@ do  --Expansion Select
             LandingPageUtil.SelectExpansion();
         end
     end
+
+    function LandingPageUtil.GetAllExpansionNames()
+        local names = {};
+        for _, expansionID in ipairs(ExpansionList) do
+            table.insert(names, ExpansionData[expansionID].name);
+        end
+        return names
+    end
 end
 
 --[[
