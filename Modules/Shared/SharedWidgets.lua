@@ -300,7 +300,7 @@ do  -- Checkbox
             local f = GameTooltip;
             f:Hide();
             f:SetOwner(self, "ANCHOR_RIGHT");
-            f:SetText(self.Label:GetText(), 1, 1, 1, 1, true);
+            f:SetText(self.tooltipTitle or self.Label:GetText(), 1, 1, 1, 1, true);
 
             if type(self.tooltip) == "function" then
                 f:AddLine(self.tooltip(), 1, 0.82, 0, true);
@@ -412,7 +412,7 @@ do  -- Checkbox
     function CheckboxMixin:SetMaxWidth(maxWidth)
         --this width includes box and label
         self.Label:SetWidth(maxWidth - LABEL_OFFSET);
-        self.SetWidth(maxWidth);
+        self:SetWidth(maxWidth);
     end
 
     function CheckboxMixin:SetLabel(label)
@@ -436,10 +436,15 @@ do  -- Checkbox
         end
     end
 
+    function CheckboxMixin:GetWidgetHeight()
+        return math.max(BUTTON_MIN_SIZE, math.ceil(self.Label:GetHeight() + 4));
+    end
+
     function CheckboxMixin:SetData(data)
         self.dbKey = data.dbKey;
         self.tooltip = data.tooltip;
         self.tooltip2 = data.tooltip2;
+        self.tooltipTitle = data.tooltipTitle;
         self.onClickFunc = data.onClickFunc;
         self.onEnterFunc = data.onEnterFunc;
         self.onLeaveFunc = data.onLeaveFunc;
@@ -464,6 +469,7 @@ do  -- Checkbox
         b.Label:SetJustifyV("TOP");
         b.Label:SetTextColor(1, 0.82, 0);  --labelcolor
         b.Label:SetPoint("LEFT", b, "LEFT", LABEL_OFFSET, 0);
+        b.Label:SetMaxLines(1);
 
         b.Border = b:CreateTexture(nil, "ARTWORK");
         b.Border:SetTexture(Def.CheckboxTexture);
@@ -4470,7 +4476,6 @@ do  --DropdownFrame--
 
     function DropdownFrameMixin:SetLabelWidth(width)
         self.Label:SetWidth(width);
-        self:SetWidth(242 + width);
         self.Button:SetPoint("LEFT", self, "LEFT", 14 + width, 0);
     end
 
@@ -4534,6 +4539,16 @@ do  --DropdownFrame--
         addon.LandingPageUtil.DropdownMenu:ToggleMenu(self.Button, menuInfoGetter);
     end
 
+    function DropdownFrameMixin:SetShortened(shortened)
+        if shortened then
+            self.Label:Hide();
+            self:SetWidth(300);
+        else
+            self.Label:Show();
+            self:SetWidth(386);
+        end
+    end
+
 
     local DropdownButtonMixin = {};
 
@@ -4568,13 +4583,12 @@ do  --DropdownFrame--
     addon.CreateDropdownFrame = function(parent)
         local f = CreateFrame("Frame", nil, parent);
         Mixin(f, DropdownFrameMixin);
-        f:SetSize(342, 36);
+        f:SetSize(342, 24);
 
         local Label = f:CreateFontString(nil, "OVERLAY", "GameFontHighlightMedium");
         f.Label = Label;
         Label:SetJustifyH("LEFT");
         Label:SetPoint("LEFT", f, "LEFT", 0, 0);
-
 
         local Button = CreateFrame("Button", nil, f);
         f.Button = Button;
@@ -4597,8 +4611,8 @@ do  --DropdownFrame--
             tex:SetBlendMode("ADD");
         end
 
-        Button:SetSize(240, 26);
-        Button:SetPoint("RIGHT", f, "RIGHT", -18, 0);
+        Button:SetSize(240, 24);
+        Button:SetPoint("RIGHT", f, "RIGHT", -12, 0);
 
         Button.Text = Button:CreateFontString(nil, "OVERLAY", "GameFontHighlight");
         Button.Text:SetPoint("LEFT", Button, "LEFT", 8, 0);
@@ -4614,7 +4628,7 @@ do  --DropdownFrame--
         Button:SetScript("OnMouseUp", Button.OnMouseUp);
         Button:SetMotionScriptsWhileDisabled(true);
 
-
+        f:SetShortened(false);
         f:SetLabelWidth(144);
         f:Enable();
 

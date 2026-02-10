@@ -598,7 +598,11 @@ do  --Dropdown Menu
 
     function MenuButtonMixin:UpdateVisual()
         if self.isHeader then
-            self.Text:SetTextColor(148/255, 124/255, 102/255);  --0.804, 0.667, 0.498
+            if self.blizzardTheme then
+                self.Text:SetTextureColor(1, 0.82, 0);
+            else
+                self.Text:SetTextColor(148/255, 124/255, 102/255);  --0.804, 0.667, 0.498
+            end
             return
         end
 
@@ -606,7 +610,11 @@ do  --Dropdown Menu
             if self.isDangerousAction then
                 self.Text:SetTextColor(1.000, 0.125, 0.125);
             else
-                self.Text:SetTextColor(215/255, 192/255, 163/255);  --0.922, 0.871, 0.761
+                if self.blizzardTheme then
+                    self.Text:SetTextColor(1, 1, 1);
+                else
+                    self.Text:SetTextColor(215/255, 192/255, 163/255);  --0.922, 0.871, 0.761
+                end
             end
             self.LeftTexture:SetDesaturated(false);
             self.LeftTexture:SetVertexColor(1, 1, 1);
@@ -837,6 +845,7 @@ do  --Dropdown Menu
         self.buttonPool:ReleaseAll();
         self.owner = owner;
         self.independent = nil;
+        local blizzardTheme = menuInfo and menuInfo.blizzardTheme;
 
         if not owner then return end;
 
@@ -892,6 +901,7 @@ do  --Dropdown Menu
                     if v.disabled then
                         widget:Disable();
                     end
+                    widget.blizzardTheme = blizzardTheme;
                     widget:UpdateVisual();
                 elseif v.type == "Divider" then
                     widget = self.texturePool:Acquire();
@@ -944,15 +954,19 @@ do  --Dropdown Menu
             end
         end
 
-
         -- We also use this for EditModeDropdownFrame, whose border is greyscale
         -- Desaturated to match color
 
-        local desaturateBorder = menuInfo and menuInfo.desaturateBorder;
-        local a = desaturateBorder and 0.9 or 1;
+        local a = blizzardTheme and 0.9 or 1;
         for _, p in ipairs(self.Frame.Background.pieces) do
-            p:SetDesaturated(desaturateBorder);
+            p:SetDesaturated(blizzardTheme);
             p:SetVertexColor(a, a, a);
+        end
+
+        if blizzardTheme then
+            self.Highlight.Texture:SetVertexColor(0.6, 0.6, 0.6);
+        else
+            self.Highlight.Texture:SetVertexColor(119/255, 96/255, 74/255);
         end
     end
 

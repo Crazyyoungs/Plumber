@@ -344,11 +344,14 @@ local DefaultValues = {
         NameplateQuest_IconSize = 2,
         NameplateQuest_ShowPartyQuest = false,
         NameplateQuest_ShowTargetProgress = false,
-            NameplateQuest_TextOutline = true,
+        NameplateQuest_ShowProgressOnHover = false,
+        NameplateQuest_ShowProgressOnKeyPress = false,
+            NameplateQuest_ShowProgressModifierKey = "ALT",
         NameplateQuest_WidgetOffsetX = 0,
         NameplateQuest_WidgetOffsetY = 0,
         NameplateQuest_ProgressFormat = 1,
         NameplateQuest_ProgressShowIcon = false,
+        NameplateQuest_TextOutline = true,
         --NameplateQuest_Side = "RIGHT",    --Initial value dedfined by detecting addon
 
 
