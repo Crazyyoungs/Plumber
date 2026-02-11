@@ -397,7 +397,7 @@ L["NameplateQuest ShowTargetProgress"] = "Exibir progresso no alvo";
 L["NameplateQuest ShowTargetProgress Tooltip"] = "Exibe o progresso do objetivo da missão na placa de identificação do seu alvo.";
 L["NameplateQuest ShowProgressOnHover"] = "Exibir progresso ao passar o mouse";
 L["NameplateQuest ShowProgressOnHover Tooltip"] = "Exibe o progresso do objetivo da missão ao passar o cursor sobre uma placa de identificação ou uma unidade.";
-L["NameplateQuest Instruction Find Nameplate"] = "Para ajustar a posição do ícone, vá a um local com placas de identificação visíveis.";
+L["NameplateQuest Instruction Find Nameplate"] = "Para ajustar a posição do ícone, vá para um local com placas de identificação visíveis.";
 L["NameplateQuest Progress Format"] = "Formato do progresso";
 L["Progress Show Icon"] = "Exibir ícone";
 L["Progress Format Completed"] = "Concluído/Necessário";
@@ -461,7 +461,7 @@ L["ModuleDescription AppearanceTab"] = "Modifica a aba de aparências nas coleç
 
 
 --SoftTargetName
-L["ModuleName SoftTargetName"] = "Placa de identificação: ícone de interação";
+L["ModuleName SoftTargetName"] = "Placa de identificação: Ícone de interação";
 L["ModuleDescription SoftTargetName"] = "Exibe o nome do ícone de interação de um objeto.";
 L["SoftTargetName Req Title"] = "|cffd4641cVocê precisa mudar manualmente essas configurações para que funcione:|r";
 L["SoftTargetName Req 1"] = "|cffffd100Ativar a tecla de interação|r em Opções do jogo > Jogabilidade > Controles.";
@@ -589,8 +589,8 @@ L["LootUI Option Show All Money"] = "Exibir mudanças de dinheiro";
 L["LootUI Option Show All Money Tooltip"] = "Exibe qualquer dinheiro ganho de todas as fontes, não apenas de saque.";
 L["LootUI Option Show All Currency"] = "Exibir mudanças de moedas";
 L["LootUI Option Show All Currency Tooltip"] = "Exibe quaisquer moedas ganhas de todas as fontes, não apenas de saque.\n\n|cffff4800Você pode às vezes ver moedas que não são exibidas na janela do chat.|r";
-L["LootUI Option Hide Title"] = "Ocultar o texto de \"Você recebeu\"";
-L["LootUI Option Hide Title Tooltip"] = "Esconde o texto de \"Você recebeu\" no topo da janela de saque.";
+L["LootUI Option Hide Title"] = "Ocultar o texto \"Você recebeu\"";
+L["LootUI Option Hide Title Tooltip"] = "Esconde o texto \"Você recebeu\" no topo da janela de saque.";
 
 
 --Quick Slot For Third-party Dev
@@ -632,7 +632,7 @@ L["Drawer Option Update Frequently"] = "Atualizar frequentemente";
 L["Drawer Option Update Frequently Tooltip"] = "Tenta atualizar os estados dos botões sempre que houver uma mudança em suas bolsas ou livros de feitiços. Ativar esta opção pode aumentar ligeiramente o uso de recursos.";
 L["ModuleName DrawerMacro"] = "Macro abre-fecha";
 L["ModuleDescription DrawerMacro"] = "Cria um menu flutuante personalizado para administrar seus itens, feitiços, mascotes, montarias, brinquedos.\n\nPara fazer um macro abre-fecha, primeiro crie um macro, então digite |cffd7c0a3#plumber:drawer|r na caixa de texto.";
-["No Slot For New Character Macro Alert"] = "Você precisa ter um slot de macro específico de personagem disponível para completar esta ação.";
+L["No Slot For New Character Macro Alert"] = "Você precisa ter um slot de macro específico de personagem disponível para completar esta ação.";
 
 
 --New Expansion Landing Page
