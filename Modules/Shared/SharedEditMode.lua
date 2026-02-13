@@ -485,7 +485,8 @@ do  --EditModeSettingsDialog
                         self:UpdateWidgetEnabledState(widget);
                         if widgetData.newFeature then
                             local label = self.newFeatureLabelPool:Acquire();
-                            label:SetPoint("LEFT", widget.Label, "RIGHT", -12, 0);
+                            local width = widget.Label:GetWrappedWidth();
+                            label:SetPoint("LEFT", widget.Label, "LEFT", width - 12, 0);
                             label:Show();
                         end
                     end
