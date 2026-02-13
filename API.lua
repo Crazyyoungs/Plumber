@@ -2010,15 +2010,13 @@ do  -- Reputation
             end
         end
 
-        if C_Reputation.IsFactionParagon and C_Reputation.IsFactionParagon(factionID) then
-            if not isMajorFaction or C_MajorFactions.HasMaximumRenown(factionID) then
-                isFull = true;
-                if paragonRepEarned and paragonThreshold and paragonThreshold ~= 0 then
-                    local paragonLevel = floor(paragonRepEarned / paragonThreshold);
-                    currentValue = paragonRepEarned - paragonLevel * paragonThreshold;
-                    maxValue = paragonThreshold;
-                    level = paragonLevel;
-                end
+        if C_Reputation.IsFactionParagonForCurrentPlayer and C_Reputation.IsFactionParagonForCurrentPlayer(factionID) then
+            isFull = true;
+            if paragonRepEarned and paragonThreshold and paragonThreshold ~= 0 then
+                local paragonLevel = floor(paragonRepEarned / paragonThreshold);
+                currentValue = paragonRepEarned - paragonLevel * paragonThreshold;
+                maxValue = paragonThreshold;
+                level = paragonLevel;
             end
         end
 

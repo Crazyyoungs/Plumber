@@ -476,7 +476,7 @@ do
         --See Blizzard_UIPanels_Game/ReputationFrame.lua
         self.UpdateTooltip = nil;
 
-        if (self.reputationType == 3 and C_MajorFactions.HasMaximumRenown(self.factionID)) or (self.reputationType ~= 3 and C_Reputation.IsFactionParagon(self.factionID)) then
+        if C_Reputation.IsFactionParagonForCurrentPlayer(self.factionID) then
             ReputationTooltipScripts.ShowParagonRewardsTooltip(self);
         elseif self.reputationType == 2 then    --Friendship
             ReputationTooltipScripts.ShowFriendshipReputationTooltip(self);
