@@ -146,14 +146,15 @@ do
             tooltip:AddLine(description, 1, 0.82, 0, true);
 
             if rewardQuestID then
-                GameTooltip_AddQuestRewardsToTooltip(tooltip, rewardQuestID);
+                --GameTooltip_AddQuestRewardsToTooltip(tooltip, rewardQuestID);
             end
         end
 
-        ReputationTooltipScripts.AppendClickInstruction(tooltip, factionID, true);
+        tooltip:AddLine(" ");
+        ReputationTooltipScripts.AppendClickInstruction(tooltip, factionID);
 
-        --tooltip:Show();
-        GameTooltip_OnShow(tooltip);    --Recalculating padding
+        tooltip:Show();
+        --GameTooltip_OnShow(tooltip);    --Recalculating padding
 
         if rewardQuestID and not API.IsQuestRewardCached(rewardQuestID) then
             self.UpdateTooltip = self.ShowTooltip;
