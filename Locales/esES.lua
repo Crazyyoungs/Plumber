@@ -24,6 +24,7 @@ L["Quick Slot Layout"] = "Disposición";
 L["Quick Slot Layout Linear"] = "Lineal";
 L["Quick Slot Layout Radial"] = "Radial";
 L["Restriction Combat"] = "No funciona en combate";    --Indicate a feature can only work when out of combat
+L["Restriction Instance"] = "Esta característica no funciona en estancias.";
 L["Map Pin Change Size Method"] = "\n\n*Puedes cambiar el tamaño del pin en el mapa - Filtro de mapa - Plumber";
 L["Toggle Plumber UI"] = "Toggle Plumber UI";
 L["Toggle Plumber UI Tooltip"] = "Mostrar la siguiente interfaz de usuario de Plumber en el modo de edición:\n%s\n\nEsta casilla de verificación solo controla su visibilidad en el modo de edición. No habilitará ni deshabilitará estos módulos.";
@@ -43,6 +44,7 @@ L["New Feature Abbr"] = "Nuevo";
 L["Format Month Day"] = EVENT_SCHEDULER_DAY_FORMAT or "%s %d";
 L["Always On Module"] = "Este módulo está siempre activado.";
 L["Return To Module List"] = "Volver a la lista";
+L["Generic Addon Conflict"] = "Este módulo podría ser incompatible con complementos de funcionalidades similares.:";
 
 
 --Settings Category
@@ -325,6 +327,7 @@ L["ModuleDescription WorldMapPin_TWW"] = "Muestra pines adicionales en el mapa d
 
 --Delves
 L["Great Vault Tier Format"] = GREAT_VAULT_WORLD_TIER or "Tier %s";
+L["Great Vault World Activity Tooltip"] = "Nivel 1 y actividades de mundo";
 L["Item Level Format"] = ITEM_LEVEL or "Nivel de objeto %d";
 L["Item Level Abbr"] = ITEM_LEVEL_ABBR or "iLvl";
 L["Delves Reputation Name"] = "Viaje de explorador de profundidades";
@@ -382,6 +385,18 @@ L["Click To Disable"] = "Click para desactivar";
 --NameplateWidget
 L["ModuleName NameplateWidget"] = "Barra indicadora: Llave ardiente inferior";
 L["ModuleDescription NameplateWidget"] = "Muestra el número de Remanentes radiantes que posees.";
+
+
+--NameplateQuestIndicator
+L["ModuleName NameplateQuest"] = "Placa de nombre: Indicador de misión";
+L["ModuleDescription NameplateQuest"] = "Muestra un indicador de misión en las placas de nombre.\n\n- (Opcional) Muestra el progreso del objetivo de la misión para tu objetivo.\n\n- (Opcional) Muestra un indicador de misión si los miembros de tu grupo no han completado el objetivo.";
+L["NameplateQuest ShowPartyQuest"] = "Mostrar la misión del miembro del grupo";
+L["NameplateQuest ShowPartyQuest Tooltip"] = "Muestra un marcador %s si uno de los miembros de tu grupo no ha completado el objetivo de la misión.";
+L["NameplateQuest ShowTargetProgress"] = "Mostrar progreso en el objetivo";
+L["NameplateQuest ShowTargetProgress Tooltip"] = "Muestra el progreso del objetivo de la misión en la placa de nombre de tu objetivo.";
+L["NameplateQuest ShowProgressOnHover"] = "Mostrar progreso al pasar el cursor";
+L["NameplateQuest ShowProgressOnHover Tooltip"] = "Muestra el progreso del objetivo de la misión cuando pasas el cursor sobre una placa de nombre o una unidad.";
+L["NameplateQuest Instruction Find Nameplate"] = "Para ajustar la posición del icono, ve a un lugar donde se vean las placas con los nombres de los NPC.";
 
 
 --PartyInviterInfo
@@ -564,6 +579,10 @@ L["LootUI Option Low Frame Strata"] = "Send to Back";
 L["LootUI Option Low Frame Strata Tooltip"] = "While in Loot Notification Mode, place the loot window behind other UI.\n\nThis option doesn't affect Manual Loot Mode.";
 L["LootUI Option Show Reputation"] = "Show Reputation Changes";
 L["LootUI Option Show Reputation Tooltip"] = "Display any reputation increases in the loot window.\n\nReputations earned during combat or in PvP instances will be displayed afterwards.";
+L["LootUI Option Show All Money"] = "Mostrar cualquier cambio de oro";
+L["LootUI Option Show All Money Tooltip"] = "Muestra el oro ganado de todas las fuentes, no solo el botín.";
+L["LootUI Option Hide Title"] = "Ocultar el texto \"Has recibido\" ";
+L["LootUI Option Hide Title Tooltip"] = "Ocultar el texto \"Has recibido\" en la parte superior de la ventana de botín.";
 
 
 --Quick Slot For Third-party Dev
@@ -578,6 +597,7 @@ L["PlumberMacro Drive"] = "Plumber macro C.A.R.R.O.";
 L["PlumberMacro Drawer"] = "Plumber macro de cajón";
 L["PlumberMacro Housing"] = "Plumber macro de hogar";
 L["PlumberMacro Torch"] = "Plumber macro de antorcha";
+L["PlumberMacro Outfit"] = "Plumber macro de atuendo";
 L["PlumberMacro DrawerFlag Combat"] = "El cajón se actualizará después de salir de combate.";
 L["PlumberMacro DrawerFlag Stuck"] = "Algo salió mal al actualizar el cajón.";
 L["PlumberMacro Error Combat"] = "No disponible en combate";
@@ -604,6 +624,7 @@ L["Drawer Option Update Frequently"] = "Actualizar frecuentemente";
 L["Drawer Option Update Frequently Tooltip"] = "Intenta actualizar el estado de los botones cada vez que haya un cambio en las bolsas o en el libro de hechizos. Activar esta opción puede aumentar ligeramente el uso de recursos.";
 L["ModuleName DrawerMacro"] = "Macro de cajón";
 L["ModuleDescription DrawerMacro"] = "Crea un menú desplegable personalizado para administrar tus items, hechizos, mascotas, monturas y juguetes.\n\nPara crear una macro de cajón, primero crea una nueva macro y luego ingresa |cffd7c0a3#plumber:drawer|r en el cuadro de edición de comandos.";
+L["No Slot For New Character Macro Alert"] = "Necesitas tener una ranura de macro específica para personajes libre para completar esta acción.";
 
 
 --New Expansion Landing Page
@@ -701,9 +722,18 @@ L["Missing Appearances Format"] = "%d |4appearance:appearances; missing";
 L["Press Key To Copy Format"] = "Presiona |cffffd100%s|r para copiar";
 
 
+--TransmogOutfitSelect
+L["ModuleName TransmogOutfitSelect"] = "Colección de atuendos: acceso rápido";
+L["ModuleDescription1 TransmogOutfitSelect"] = "Te permite abrir la colección de atuendos y habilitar la apariencia guardada en cualquier lugar.";
+L["ModuleDescription2 TransmogOutfitSelect"] = "Para hacer esto: abre la interfaz de transfiguración y luego arrastra el botón |cffd7c0a3Acceso rápido|r encima de la lista de atuendos a tus barras de acción.";
+L["Outfit Collection"] = "Colección de atuendos";
+L["Quick Access Outfit Button"] = "Acceso rápido";
+L["Quick Access Outfit Button Tooltip"] = "Haz click y arrastra este botón a tus barras de acción para poder cambiar de atuendo en cualquier lugar.";
+
+
 --QuestWatchCycle
 L["ModuleName QuestWatchCycle"] = "Atajos de teclado: Centrarse en la misión";
-L["ModuleDescription QuestWatchCycle"] = "Te permite presionar teclas de acceso rápido para centrarse en la siguiente/anterior misión en el rastreador de objetivos.\n\n|cffd4641cSet your hotkeys in Keybindings> Plumber Addon.|r";
+L["ModuleDescription QuestWatchCycle"] = "Te permite presionar teclas de acceso rápido para centrarse en la siguiente/anterior misión en el rastreador de objetivos.\n\n|cffd4641cConfigura tus teclas de acceso rápido en Opciones/Atajos de teclado/Plumber.|r";
 
 
 --CraftSearchExtended
@@ -714,6 +744,7 @@ L["ModuleDescription CraftSearchExtended"] = "Muestra más resultados al buscar 
 --DecorModelScaleRef
 L["ModuleName DecorModelScaleRef"] = "Catálogo de decoración: Plátano para escala"; --See HOUSING_DASHBOARD_CATALOG_TOOLTIP
 L["ModuleDescription DecorModelScaleRef"] = "- Añade una referencia de tamaño (un plátano) a la ventana de vista previa de la decoración, lo que te permitirá calcular el tamaño de los objetos.\n\n- También te permite cambiar el ángulo de la cámara manteniendo pulsado el botón izquierdo y moviéndolo verticalmente.";
+L["Toggle Banana"] = "Plátano de referencia";
 
 
 --Player Housing
