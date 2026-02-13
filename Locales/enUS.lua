@@ -638,7 +638,7 @@ L["No Slot For New Character Macro Alert"] = "You need to have a spare Character
 
 --New Expansion Landing Page
 L["ModuleName NewExpansionLandingPage"] = "Expansion Summary";
-L["ModuleDescription NewExpansionLandingPage"] = "A UI that displays factions, weekly activities, and raid lockouts. You can open it by:\n\n- Set a hotkey in Game Settings> Keybindings> Plumber Addon.\n\n- Use the Addon Compartment under the Calendar button.";
+L["ModuleDescription NewExpansionLandingPage"] = "A UI that displays factions, weekly activities, and raid lockouts. You can open it by:\n\n- Enable the minimap button.\n\n- Set a hotkey in Game Settings> Keybindings> Plumber Addon.\n\n- Use the Addon Compartment under the Calendar button.";
 L["Abbr NewExpansionLandingPage"] = "Expansion Summary";    --An abbreviated version of the same phrase. Affects German.
 L["Reward Available"] = "Reward Available";  --As brief as possible
 L["Paragon Reward Available"] = "Paragon Reward Available";
@@ -722,7 +722,7 @@ L["LandingButtonOption SmartExpansion Tooltip 2"] = "When disabled: left-clickin
 L["LandingButtonOption ReduceSize"] = "Reduce Button Size";
 L["LandingButtonOption DarkColor"] = "Use Dark Theme";
 L["LandingButtonOption HideWhenIdle"] = "Hide When Idle";
-L["LandingButtonOption HideWhenIdle Tooltip"] = "The minimap button will stay invisible until you move the cursor to its vicinity or receive a notification.";
+L["LandingButtonOption HideWhenIdle Tooltip"] = "The minimap button will stay invisible until you move the cursor to its vicinity or receive a notification.\n\nThis option takes effect after closing the settings.";
 
 
 --RaidCheck

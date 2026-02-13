@@ -638,7 +638,7 @@ L["No Slot For New Character Macro Alert"] = "需要一个空的角色专用宏�
 
 --New Expansion Landing Page
 L["ModuleName NewExpansionLandingPage"] = "资料片概要";
-L["ModuleDescription NewExpansionLandingPage"] = "一个显示声望、每周事件和团本进度的界面。你可从以下方式访问：\n\n- 点击小地图上的卡兹阿加概要按钮。\n\n- 在游戏设置-快捷键中设置一个快捷键。";
+L["ModuleDescription NewExpansionLandingPage"] = "一个显示声望、每周事件和团本进度的界面。你可从以下方式访问：\n\n- 启用小地图上的按钮。\n\n- 在游戏设置-快捷键中设置一个快捷键。";
 L["Abbr NewExpansionLandingPage"] = "资料片概要";
 L["Reward Available"] = "奖励待领取";  --As brief as possible
 L["Paragon Reward Available"] = "巅峰奖励待领取";
@@ -691,7 +691,7 @@ L["LandingButtonOption SmartExpansion Tooltip 2"] = "未勾选时：左键点击
 L["LandingButtonOption ReduceSize"] = "缩小按钮";
 L["LandingButtonOption DarkColor"] = "深色模式";
 L["LandingButtonOption HideWhenIdle"] = "闲置时隐藏";
-L["LandingButtonOption HideWhenIdle Tooltip"] = "隐藏小地图按钮，除非鼠标移动到其附近或当你收到通知。";
+L["LandingButtonOption HideWhenIdle Tooltip"] = "隐藏小地图按钮，除非鼠标移动到其附近或当你收到通知。\n\n此选项在你关闭设置界面后生效。";
 
 
 --RaidCheck

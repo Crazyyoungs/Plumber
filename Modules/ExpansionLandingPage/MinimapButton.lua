@@ -144,7 +144,7 @@ do  --ButtonMixin
     end
 
     function ButtonMixin:UpdateVisibility(animating)
-        self.enabled = GetDBBool("LandingButton_ShowButton");
+        self.enabled = GetDBBool("LandingButton_ShowButton") and GetDBBool("NewExpansionLandingPage");
         if self.enabled then
             self:Show();
             if GetDBBool("LandingButton_HideWhenIdle") then
@@ -743,10 +743,6 @@ do  --Button Settings/Customize
         end
     end
 
-    LandingPageUtil.ToggleMinimapSettings = function()
-        MiniButton:ToggleSettings();
-    end
-
     function ButtonMixin:LoadSettings()
         MenuSchematc = nil;
 
@@ -765,6 +761,19 @@ do  --Button Settings/Customize
         end);
 
         self:UpdateVisibility();
+    end
+
+
+    LandingPageUtil.ToggleMinimapSettings = function()
+        if MiniButton then
+            MiniButton:ToggleSettings();
+        end
+    end
+
+    LandingPageUtil.UpdateMinimapButtonVisibility = function()
+        if MiniButton then
+            MiniButton:UpdateVisibility();
+        end
     end
 
 

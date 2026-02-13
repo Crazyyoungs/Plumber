@@ -91,6 +91,7 @@ function EL.EnableModule(state)
             API.RemoveButtonFromAddonCompartment(IDENTIFIER);
         end
     end
+    addon.LandingPageUtil.UpdateMinimapButtonVisibility();
 end
 
 

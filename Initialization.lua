@@ -243,6 +243,7 @@ local DefaultValues = {
         LandingPage_Activity_HideCompleted = true,
         LandingPage_Raid_CollapsedAchievement = false,
         LandingPage_AdvancedTooltip = true,
+
         LandingButton_ShowButton = true,
         LandingButton_PrimaryUI = 1,
         LandingButton_SmartExpansion = false,

@@ -1771,6 +1771,14 @@ do  --Expansion Select
     end
 end
 
+
+do  --Minimap Button
+    LandingPageUtil.UpdateMinimapButtonVisibility = function()
+        --Override
+    end
+end
+
+
 --[[
 do  --SoftTargetName
     local EL = CreateFrame("Frame");
