@@ -215,6 +215,9 @@ do
 
     function PlumberExpansionLandingPageMixin:OnLoad()
         self.OnLoad = nil;
+        self:SetScript("OnLoad", nil);
+        PlumberExpansionLandingPageMixin.OnLoad = nil;
+
         MainFrame = self;
 
         local NineSlice;
@@ -435,6 +438,12 @@ do
 
     function PlumberExpansionLandingPageMixin:ToggleUI()
         self:SetShown(not self:IsShown());
+    end
+
+    function LandingPageUtil.ToggleUI()
+        if MainFrame then
+            MainFrame:ToggleUI();
+        end
     end
 
     function PlumberExpansionLandingPageMixin:ResetPosition()

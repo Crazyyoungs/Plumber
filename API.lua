@@ -1468,6 +1468,25 @@ do  -- Map
             return info.name
         end
     end
+
+    function API.GetPlayerContinent()
+        local uiMapID = GetBestMapForUnit("player");
+        if uiMapID then
+            local continentMapID;
+            local info = GetMapInfo(uiMapID);
+            while info do
+                if info.mapType == 2 then   --Enum.UIMapType.Continent
+                    continentMapID = info.mapID;
+                    break
+                elseif info.parentMapID then
+                    info = GetMapInfo(info.parentMapID);
+                else
+                    info = nil;
+                end
+            end
+            return continentMapID
+        end
+    end
 end
 
 do  -- Instance -- Map
@@ -1498,6 +1517,14 @@ do  -- Pixel
         return GetPixelForScale(scale, pixelSize);
     end
     API.GetPixelForWidget = GetPixelForWidget;
+
+    function API.GetTexturePixelSize(texture)
+        local SCREEN_WIDTH, SCREEN_HEIGHT = GetPhysicalScreenSize();
+        local scale = texture:GetEffectiveScale();
+        local w, h = texture:GetSize();
+        local pixel = (768/SCREEN_HEIGHT)/scale;
+        return w/pixel, h/pixel
+    end
 
     function API.UpdateTextureSliceScale(textureSlice)
         local SCREEN_WIDTH, SCREEN_HEIGHT = GetPhysicalScreenSize();

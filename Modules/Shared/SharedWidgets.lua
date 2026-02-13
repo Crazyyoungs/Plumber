@@ -4494,6 +4494,7 @@ do  --DropdownFrame--
 
     function DropdownFrameMixin:SetMenuData(menuData)
         self.menuData = menuData;
+        self.Button.tooltip = menuData.tooltip;
         self:UpdateSelectedText();
         self:UpdateEnabledState();
     end
@@ -4553,10 +4554,13 @@ do  --DropdownFrame--
     local DropdownButtonMixin = {};
 
     function DropdownButtonMixin:OnEnter()
-        if self.Text:IsTruncated() then
+        if self.Text:IsTruncated() or self.tooltip then
             local tooltip = GameTooltip;
             tooltip:SetOwner(self, "ANCHOR_RIGHT");
             tooltip:SetText(self.Text:GetText(), 1, 1, 1);
+            if self.tooltip then
+                tooltip:AddLine(self.tooltip, 1, 0.82, 0, true);
+            end
             tooltip:Show();
         end
     end
@@ -5819,5 +5823,54 @@ do  --Blizzard Check Button
             f.Button:SetScript(method, func);
         end
         return f
+    end
+end
+
+do  --Esc To Close Frame
+    --Add one frame to UISpecialFrames that will handle the closing of other Plumber UIs
+
+    local FramePool = {};
+
+    local CloseDummy = CreateFrame("Frame", "PlumberCloseDummyFrame", UIParent);
+    CloseDummy:Hide();
+    table.insert(UISpecialFrames, CloseDummy:GetName());
+
+    CloseDummy:SetScript("OnHide", function(self)
+        self:Hide();
+        self:SetScript("OnUpdate", nil);
+        for f in pairs(FramePool) do
+            f:Hide();
+        end
+    end);
+
+    function CloseDummy:OnUpdate()
+        self:SetScript("OnUpdate", nil);
+        for f in pairs(FramePool) do
+            if f:IsShown() then
+                return
+            end
+        end
+        self:Hide();
+    end
+
+    function CloseDummy:Update()
+        self:SetScript("OnUpdate", self.OnUpdate);
+    end
+
+    function addon.AllowFrameClosingByEsc(frame)
+        if not FramePool[frame] then
+            FramePool[frame] = true;
+
+            assert(frame:GetScript("OnShow") ~= nil, "This frame does not have an OnShow script.");
+            assert(frame:GetScript("OnHide") ~= nil, "This frame does not have an OnHide script.");
+
+            frame:HookScript("OnShow", function()
+                CloseDummy:Show();
+            end);
+
+            frame:HookScript("OnHide", function()
+                CloseDummy:Update()
+            end);
+        end
     end
 end

@@ -241,6 +241,17 @@ do
 
         return f
     end
+
+    function LandingPageUtil.GetModuleNameWithHotkey()
+        local hotkey1, hotkey2 = GetBindingKey("TOGGLE_PLUMBER_LANDINGPAGE");
+        local hotkey = hotkey1 or hotkey2;
+        local title = L["ModuleName NewExpansionLandingPage"];
+        if hotkey then
+            local bindingText = GetBindingText(hotkey) or hotkey;
+            title = title .. string.format(" |cffffd100(%s)|r", bindingText);
+        end
+        return title
+    end
 end
 
 

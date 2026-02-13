@@ -233,6 +233,11 @@ do  --EditModeSettingsDialog
                     postOffset = 0;
                 end
 
+                if order == 1 and (widget.widgetType == "Dropdown" or widget.widgetType == "CheckboxDropdown") then
+                    preOffset = OPTION_GAP_Y;
+                    postOffset = 0;
+                end
+
                 height = height + preOffset;
                 widget:ClearAllPoints();
                 if widget.align and widget.align ~= "left" then
@@ -339,6 +344,7 @@ do  --EditModeSettingsDialog
         local button = self:AcquireWidgetByType("UIPanelButton");
         button:SetButtonText(widgetData.label);
         button:SetScript("OnClick", widgetData.onClickFunc);
+        button.shouldEnableOption = widgetData.stateCheckFunc;
         if (not widgetData.stateCheckFunc) or (widgetData.stateCheckFunc()) then
             button:Enable();
         else
@@ -425,6 +431,7 @@ do  --EditModeSettingsDialog
         if widget.shouldEnableOption and not widget.shouldEnableOption() then
             enabled = false;
         end
+
         if widget.parentDBKey and not addon.GetDBBool(widget.parentDBKey) then
             enabled = false;
         end
@@ -545,6 +552,10 @@ do  --EditModeSettingsDialog
         end
     end
 
+    function EditModeSettingsDialogMixin:OnShow()
+
+    end
+
     function EditModeSettingsDialogMixin:OnHide()
         addon.CallbackRegistry:Trigger("SettingsPanel.ModuleOptionClosed");
     end
@@ -582,6 +593,7 @@ do  --EditModeSettingsDialog
 
             f:SetScript("OnDragStart", f.OnDragStart);
             f:SetScript("OnDragStop", f.OnDragStop);
+            f:SetScript("OnShow", f.OnShow);
             f:SetScript("OnHide", f.OnHide);
 
             local function CreateFrameContainer()
@@ -628,6 +640,8 @@ do  --EditModeSettingsDialog
                 return CreateFrame("Frame", nil, f, "NewFeatureLabelNoAnimateTemplate");
             end
             f.newFeatureLabelPool = API.CreateObjectPool(CreateNewFeatureLabel);
+
+            addon.AllowFrameClosingByEsc(f);
         end
 
         if EditModeSettingsDialog:IsShown() and not EditModeSettingsDialog:IsOwner(parent) then

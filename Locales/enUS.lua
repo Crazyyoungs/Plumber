@@ -693,8 +693,8 @@ L["Quest ID"] = "Quest ID";
 L["Creature ID"] = "Creature ID";
 L["Edit"] = EDIT or "Edit";
 L["Delete"] = DELETE or "Delete";
-L["Visit Quest Hub To Log Quests"] = "Visit the quest hub and interact with the quest givers to log today's quests."
-L["Quest Hub Instruction Celestials"] = "Visit the August Celestials Quartermaster in Vale of Eternal Blossoms to find out which temple needs your assistance."
+L["Visit Quest Hub To Log Quests"] = "Visit the quest hub and interact with the quest givers to log today's quests.";
+L["Quest Hub Instruction Celestials"] = "Visit the August Celestials Quartermaster in Vale of Eternal Blossoms to find out which temple needs your assistance.";
 L["Unavailable Klaxxi Paragons"] = "Unavailable Klaxxi Paragons:";
 L["Weekly Coffer Key Tooltip"] = "The first four weekly caches you earn each week contain a Restored Coffer Key.";
 L["Weekly Coffer Key Shards Tooltip"] = "The first four weekly caches you earn each week contain Coffer Key Shards.";
@@ -707,6 +707,22 @@ L["Click To Switch"] = "Click to switch to |cffffffff%s|r";
 L["Click To Queue"] = "Click to queue for |cffffffff%s|r";
 L["Click to Open Format"] = "Click to open %s";
 L["List Is Empty"] = "The list is empty.";
+
+
+--ExpansionSummaryMinimapButton
+L["LandingButton Settings Title"] = "Expansion Summary: Minimap Button";
+L["LandingButton Tooltip Format"] = "Left click to toggle %s.\nRight click for more options.";
+L["LandingButton Customize"] = "Customize";
+L["LandingButtonOption ShowButton"] = "Enable Minimap Button";
+L["LandingButtonOption PrimaryUI"] = "Left Click to Open";   --Control which UI to open on left-click
+L["LandingButtonOption PrimaryUI Tooltip"] = "Choose which UI to open when left-clicking the minimap button.";
+L["LandingButtonOption SmartExpansion"] = "Auto Choose Expansion";
+L["LandingButtonOption SmartExpansion Tooltip 1"] = "When enabled: left-clicking the minimap button opens the game UI suitable for your current location, such as opening Covenant Sanctum Report when you are in Shadowlands.";
+L["LandingButtonOption SmartExpansion Tooltip 2"] = "When disabled: left-clicking the minimap button always opens %s.";
+L["LandingButtonOption ReduceSize"] = "Reduce Button Size";
+L["LandingButtonOption DarkColor"] = "Use Dark Theme";
+L["LandingButtonOption HideWhenIdle"] = "Hide When Idle";
+L["LandingButtonOption HideWhenIdle Tooltip"] = "The minimap button will stay invisible until you move the cursor to its vicinity or receive a notification.";
 
 
 --RaidCheck
