@@ -682,6 +682,7 @@ L["List Is Empty"] = "暂无可显示内容";
 L["LandingButton Settings Title"] = "资料片概要：小地图按钮";
 L["LandingButton Tooltip Format"] = "左键点击以打开%s。\n右键点击以显示更多选项。";
 L["LandingButton Customize"] = "自定义";
+L["LandingButton Reposition Tooltip"] = "按|cffffffffShift|r解锁";
 L["LandingButtonOption ShowButton"] = "启用小地图按钮";
 L["LandingButtonOption PrimaryUI"] = "左键点击以打开";   --Control which UI to open on left-click
 L["LandingButtonOption PrimaryUI Tooltip"] = "选择左键点击小地图按钮后打开的界面。";

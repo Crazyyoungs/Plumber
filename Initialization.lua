@@ -250,6 +250,7 @@ local DefaultValues = {
         LandingButton_ReduceSize = false,
         LandingButton_DarkColor = false,
         LandingButton_HideWhenIdle = false,
+
         --LandingButton_Pos_X, LandingButton_Pos_Y
 
 

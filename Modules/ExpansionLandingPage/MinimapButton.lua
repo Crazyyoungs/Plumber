@@ -19,6 +19,8 @@ local MenuSchematc;
 local Def = {
     TextureFile = "Interface/AddOns/Plumber/Art/ExpansionLandingPage/LandingButton.png",
     ButtonBaseSize = 36,
+    ReLockCountdown = 2,        --After unlocking minimap position, re-lock it after x seconds when the button loses focus
+    DragStartThreshold = 8,     --Mouse-down and move this distance to initiate repositioning
 };
 
 
@@ -27,18 +29,38 @@ local OrderHallUtil = {};
 
 
 do  --ButtonMixin
+    local SetPoint_Original;
+
     function ButtonMixin:OnLoad()
         if not MiniButton then
             MiniButton = self;
+
+            --Some minimap addon overrides this to prevent moving
+            --We disable our drag to move feature when this API is modified
+            SetPoint_Original = self.SetPoint;
         end
 
-        API.DisableSharpening(self.VisualContainer.BaseTexture);
-        self.VisualContainer.BaseTexture:SetTexture(Def.TextureFile);
-        self.VisualContainer.BaseTexture:SetTexCoord(0, 0.25, 0, 0.25);
-        API.DisableSharpening(self.VisualContainer.HighlightTexture);
-        self.VisualContainer.HighlightTexture:SetTexture(Def.TextureFile);
-        self.VisualContainer.HighlightTexture:SetTexCoord(0, 0.25, 0.25, 0.5);
+        local f = self.VisualContainer;
+        API.DisableSharpening(f.BaseTexture);
+        f.BaseTexture:SetTexture(Def.TextureFile);
+        f.BaseTexture:SetTexCoord(0, 0.25, 0, 0.25);
+        API.DisableSharpening(f.HighlightTexture);
+        f.HighlightTexture:SetTexture(Def.TextureFile);
+        f.HighlightTexture:SetTexCoord(0, 0.25, 0.25, 0.5);
+        API.DisableSharpening(f.WarningTexture);
+        f.WarningTexture:SetTexture(Def.TextureFile);
+        f.WarningTexture:SetTexCoord(0.25, 0.5, 0.25, 0.5);
 
+        f = self.InstructionFrame;
+        API.DisableSharpening(f.BackgroundCenter);
+        f.BackgroundCenter:SetTexture(Def.TextureFile);
+        f.BackgroundCenter:SetTexCoord(96/512, 160/512, 0.5, 0.75);
+        API.DisableSharpening(f.BackgroundLeft);
+        f.BackgroundLeft:SetTexture(Def.TextureFile);
+        f.BackgroundLeft:SetTexCoord(0/512, 96/512, 0.5, 0.75);
+        API.DisableSharpening(f.BackgroundRight);
+        f.BackgroundRight:SetTexture(Def.TextureFile);
+        f.BackgroundRight:SetTexCoord(160/512, 256/512, 0.5, 0.75);
 
         self.MouseoverFrame:SetScript("OnEnter", function()
             self:UpdateVisibility(true);
@@ -50,7 +72,7 @@ do  --ButtonMixin
     end
 
     function ButtonMixin:OnEnter()
-        if not DragController.isDragging then
+        if not DragController.stage then
             self.VisualContainer.HighlightTexture:Show();
             self:ShowTooltip();
         end
@@ -63,7 +85,7 @@ do  --ButtonMixin
 
     function ButtonMixin:OnMouseDown()
         self.VisualContainer:SetScale(0.95);
-        if self:IsMovable() then
+        if self:IsMovable() and self.SetPoint == SetPoint_Original then
             DragController:SetDraggedObject(self);
         end
     end
@@ -83,7 +105,7 @@ do  --ButtonMixin
             return
         end
 
-        if not DragController.isDragging then
+        if (not DragController.isDragging) then
             if OrderHallUtil.ToggleGarrisonUI() then
                 return
             end
@@ -94,6 +116,11 @@ do  --ButtonMixin
                 LandingPageUtil.ToggleUI();
             end
         end
+    end
+
+    function ButtonMixin:OnHide()
+        DragController:Stop();
+        DragController.isDragging = nil;
     end
 
     function ButtonMixin:UpdateResolution()
@@ -208,27 +235,41 @@ do  --ButtonMixin
 end
 
 
+do  --Button Drag Lock / Instructions
+    function ButtonMixin:ShowDragInstruction(state)
+        self.VisualContainer.WarningTexture:SetShown(state);
+        self.InstructionFrame:SetShown(state);
+        if state then
+            self.VisualContainer.HighlightTexture:Hide();
+            GameTooltip:Hide();
+
+            self.InstructionFrame.Text:SetText(L["LandingButton Reposition Tooltip"]);
+            local textWidth = self.InstructionFrame.Text:GetWidth();
+            local fullWidth = textWidth + 44;
+            if fullWidth < 128 then
+                fullWidth = 128;
+            end
+            local sideWidth = 0.5*(fullWidth - 24);
+            self.InstructionFrame:SetWidth(fullWidth);
+            self.InstructionFrame.BackgroundLeft:SetWidth(sideWidth);
+            self.InstructionFrame.BackgroundRight:SetWidth(sideWidth);
+        end
+    end
+end
+
 do  --Button Position/Anchor
     local function MinimapButton_SetAngle(button, radian)
-        local x, y, q = math.cos(radian), math.sin(radian), 1;
-        if x < 0 then q = q + 1 end
-        if y > 0 then q = q + 2 end
-
-        local minimapShape = GetMinimapShape and GetMinimapShape() or "ROUND";
-
+        local x, y = math.cos(radian), math.sin(radian);
         local radialOffset = 6;
         local w = Minimap:GetWidth() / 2 + radialOffset;
         local h = Minimap:GetHeight() / 2 + radialOffset;
         x, y = x*w, y*h;
-        --local diagRadiusW = math.sqrt(2*(w)^2);
-        --local diagRadiusH = math.sqrt(2*(h)^2);
-        --x = math.max(-w, math.min(x*diagRadiusW, w));
-        --y = math.max(-h, math.min(y*diagRadiusH, h));
-
         button:SetPoint("CENTER", Minimap, "CENTER", x, y);
     end
 
     DragController.GetCursorPosition = API.GetScaledCursorPosition;
+    DragController.IsShiftKeyDown = IsShiftKeyDown;
+    DragController.dragStartDistance = Def.DragStartThreshold^2;
 
     function DragController:SetDraggedObject(object)
         self.draggedObject = object;
@@ -248,10 +289,26 @@ do  --Button Position/Anchor
         self:SetScript("OnUpdate", self.OnUpdate_PreDrag);
     end
 
+    function DragController:OnUpdate_ListenShift(elapsed)
+        if self.IsShiftKeyDown() then
+            self:SetScript("OnUpdate", nil);
+            self:DraggingStart();
+        end
+    end
+
     function DragController:OnUpdate_PreDrag(elapsed)
         self.x, self.y = self.GetCursorPosition();
-        if (self.x - self.x0) ^ 2 + (self.y - self.y0) ^ 2 >= 16 then
-            self:DraggingStart();
+        if (self.x - self.x0) ^ 2 + (self.y - self.y0) ^ 2 >= self.dragStartDistance then
+            self.stage = 2;
+            self.isDragging = true;
+            self:SetScript("OnUpdate", nil);
+            local currentTime = time();
+            if (not self.IsShiftKeyDown()) and ((not self.lastUnlockTime) or (self.lastUnlockTime and currentTime > self.lastUnlockTime + Def.ReLockCountdown)) then
+                self:SetScript("OnUpdate", self.OnUpdate_ListenShift);
+                MiniButton:ShowDragInstruction(true);
+            else
+                self:DraggingStart();
+            end
         end
     end
 
@@ -259,35 +316,34 @@ do  --Button Position/Anchor
         local x, y = MiniButton:GetCenter();
         local _x, _y = Minimap:GetCenter();
         if x and y and _x and _y then
-            return API.Round(x - _x), API.Round(y - _y)
+            return API.RoundCoord(x - _x), API.RoundCoord(y - _y)
         end
     end
 
     function DragController:DraggingStart()
+        self.lastUnlockTime = time();
         self:SnapshotCursorPosition();
 
         local x, y = self.draggedObject:GetCenter();
         self.dx = x - self.x;
         self.dy = y - self.y;
 
-        local scalar = 1.0;
+        local scalar = UIParent:GetEffectiveScale()/Minimap:GetEffectiveScale();
         local relativeTo = Minimap;
         local fromX, fromY = GetMiniButtonRelativePosition();
 
         local function SetObjectPosition(dx, dy)
             dx = dx * scalar;
             dy = dy * scalar;
-
             self.draggedObject:SetPoint("CENTER", relativeTo, "CENTER", fromX + dx, fromY + dy);
-            Def.WidgetOffsetX = fromX + dx;
-            Def.WidgetOffsetY = fromY + dy;
         end
         self.SetObjectPosition = SetObjectPosition;
 
+        --MiniButton:ClearAllPoints();
         MiniButton:OnDragStart();
 
         self.t = 1;
-        self.stage = 2;
+        self.stage = 3;
         self.isDragging = true;
         self:SetScript("OnUpdate", self.OnUpdate_Dragging);
     end
@@ -307,19 +363,26 @@ do  --Button Position/Anchor
     end
 
     function DragController:Stop()
+        --Stage1: PreDrag
+        --Stage2: ListenShift
+        --Stage3: Dragging
+
         self:SetScript("OnUpdate", nil);
         self.x, self.y = 0, 0;
         self.x0, self.y0 = 0, 0;
         self.dx, self.dy = 0, 0;
         self.t = 0;
-        if self.stage == 2 then
-            --Save current position
+        if self.stage == 2 or self.stage == 3 then
             self:SetScript("OnUpdate", self.OnUpdate_PostDragging);
-            PlumberDB.LandingButton_Pos_X, PlumberDB.LandingButton_Pos_Y = GetMiniButtonRelativePosition();
-            MiniButton:UpdatePosition();
-            addon.UpdateSettingsDialog();
+            if self.stage == 3 then
+                PlumberDB.LandingButton_Pos_X, PlumberDB.LandingButton_Pos_Y = GetMiniButtonRelativePosition();
+                MiniButton:UpdatePosition();
+                addon.UpdateSettingsDialog();
+                self.lastUnlockTime = time();
+            end
         end
         self.stage = nil;
+        MiniButton:ShowDragInstruction(false);
     end
 
     function DragController:OnHide()
@@ -330,6 +393,7 @@ do  --Button Position/Anchor
     function ButtonMixin:OnDragStart()
         self.VisualContainer:SetScale(1);
         self.VisualContainer.HighlightTexture:Hide();
+        self:ShowDragInstruction(false);
         GameTooltip:Hide();
         self:CloseContextMenu();
     end

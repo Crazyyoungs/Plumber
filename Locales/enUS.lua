@@ -713,6 +713,7 @@ L["List Is Empty"] = "The list is empty.";
 L["LandingButton Settings Title"] = "Expansion Summary: Minimap Button";
 L["LandingButton Tooltip Format"] = "Left click to toggle %s.\nRight click for more options.";
 L["LandingButton Customize"] = "Customize";
+L["LandingButton Reposition Tooltip"] = "Press |cffffffffShift|r to Unlock";
 L["LandingButtonOption ShowButton"] = "Enable Minimap Button";
 L["LandingButtonOption PrimaryUI"] = "Left Click to Open";   --Control which UI to open on left-click
 L["LandingButtonOption PrimaryUI Tooltip"] = "Choose which UI to open when left-clicking the minimap button.";
