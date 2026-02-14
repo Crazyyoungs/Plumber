@@ -158,7 +158,8 @@ do  --Expansion Select
 
     function ExpansionSelectButtonMixin:Refresh()
         self.Name:SetText(LandingPageUtil.GetCurrentExpansionInfo());
-        self:SetShown(#LandingPageUtil.GetAvailableExpansions() > 1);
+        self:Hide();    --TEMP disabled until Midnight
+        --self:SetShown(#LandingPageUtil.GetAvailableExpansions() > 1);
     end
 
     function ExpansionSelectButtonMixin:AdjustToMaxTextWidth()
