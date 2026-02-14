@@ -543,17 +543,31 @@ do  --Order Hall, RightClickMenu
         };
 
         if GetDBBool("LandingButton_SmartExpansion") then
-            --First button will be opening the primary UI
+            table.insert(MenuSchematc.objects, {type = "Button", name = L["Abbr NewExpansionLandingPage"],
+                OnClick = function()
+                    LandingPageUtil.ToggleUI();
+                end,
+            });
+
+            table.insert(MenuSchematc.objects, {type = "Button", name = JOURNEYS_LABEL,
+                OnClick = function()
+                    OrderHallUtil.ToggleBlizzardJourneys();
+                end,
+            });
+
+            table.insert(MenuSchematc.objects, {type = "Divider"});
+        else
+            --Add a button to open the other UI
             if Options.GetChoice_PrimaryUI() == 2 then
-                table.insert(MenuSchematc.objects, {type = "Button", name = JOURNEYS_LABEL,
+                table.insert(MenuSchematc.objects, {type = "Button", name = L["Abbr NewExpansionLandingPage"],
                     OnClick = function()
-                        OrderHallUtil.ToggleBlizzardJourneys();
+                        LandingPageUtil.ToggleUI();
                     end,
                 });
             else
-                table.insert(MenuSchematc.objects, {type = "Button", name = L["ModuleName NewExpansionLandingPage"],
+                table.insert(MenuSchematc.objects, {type = "Button", name = JOURNEYS_LABEL,
                     OnClick = function()
-                        LandingPageUtil.ToggleUI();
+                        OrderHallUtil.ToggleBlizzardJourneys();
                     end,
                 });
             end
@@ -622,7 +636,7 @@ do  --Order Hall, RightClickMenu
         if selectedIndex == 2 then
             return JOURNEYS_LABEL
         else
-            return L["ModuleName NewExpansionLandingPage"]
+            return L["Abbr NewExpansionLandingPage"]
         end
     end
 
@@ -706,7 +720,7 @@ do  --Button Settings/Customize
             if selectedIndex == 2 then
                 return JOURNEYS_LABEL
             else
-                return L["ModuleName NewExpansionLandingPage"]
+                return L["Abbr NewExpansionLandingPage"]
             end
         end,
 
@@ -722,7 +736,7 @@ do  --Button Settings/Customize
             local selectedIndex = Options.GetChoice_PrimaryUI();
 
             local labels = {
-                L["ModuleName NewExpansionLandingPage"],
+                L["Abbr NewExpansionLandingPage"],
                 JOURNEYS_LABEL,
             };
 
