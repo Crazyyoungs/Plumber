@@ -396,7 +396,14 @@ L["NameplateQuest ShowTargetProgress"] = "Mostrar progreso en el objetivo";
 L["NameplateQuest ShowTargetProgress Tooltip"] = "Muestra el progreso del objetivo de la misión en la placa de nombre de tu objetivo.";
 L["NameplateQuest ShowProgressOnHover"] = "Mostrar progreso al pasar el cursor";
 L["NameplateQuest ShowProgressOnHover Tooltip"] = "Muestra el progreso del objetivo de la misión cuando pasas el cursor sobre una placa de nombre o una unidad.";
+L["NameplateQuest ShowProgressOnKeyPress"] = "Mostrar progreso al presionar";
+L["NameplateQuest ShowProgressOnKeyPress Tooltip Title"] = "Mostrar progreso al presionar una tecla";
+L["NameplateQuest ShowProgressOnKeyPress Tooltip Format"] = "Muestra el progreso del objetivo de la misión al presionar la tecla |cffffffff%s|r.";
 L["NameplateQuest Instruction Find Nameplate"] = "Para ajustar la posición del icono, ve a un lugar donde se vean las placas con los nombres de los NPC.";
+L["NameplateQuest Progress Format"] = "Formato de progreso";
+L["Progress Show Icon"] = "Mostrar icono";
+L["Progress Format Completed"] = "Completado/Requerido";
+L["Progress Format Remaining"] = "Restante";
 
 
 --PartyInviterInfo
@@ -578,9 +585,11 @@ L["LootUI Option Combine Items Tooltip"] = "Mostrar items similares en una sola 
 L["LootUI Option Low Frame Strata"] = "Send to Back";
 L["LootUI Option Low Frame Strata Tooltip"] = "While in Loot Notification Mode, place the loot window behind other UI.\n\nThis option doesn't affect Manual Loot Mode.";
 L["LootUI Option Show Reputation"] = "Show Reputation Changes";
-L["LootUI Option Show Reputation Tooltip"] = "Display any reputation increases in the loot window.\n\nReputations earned during combat or in PvP instances will be displayed afterwards.";
+L["LootUI Option Show Reputation Tooltip"] = "Muestra cualquier aumento de reputación en la ventana de botín.\n\nReputations earned during combat or in PvP instances will be displayed afterwards.";
 L["LootUI Option Show All Money"] = "Mostrar cualquier cambio de oro";
 L["LootUI Option Show All Money Tooltip"] = "Muestra el oro ganado de todas las fuentes, no solo el botín.";
+L["LootUI Option Show All Currency"] = "Mostrar cualquier cambio de moneda";
+L["LootUI Option Show All Currency Tooltip"] = "Mostrar las monedas obtenidas de todas las fuentes, no solo del botín.\n\n|cffff4800Es posible que a veces veas monedas que no se muestran en la ventana de chat.|r";
 L["LootUI Option Hide Title"] = "Ocultar el texto \"Has recibido\" ";
 L["LootUI Option Hide Title Tooltip"] = "Ocultar el texto \"Has recibido\" en la parte superior de la ventana de botín.";
 
@@ -629,7 +638,7 @@ L["No Slot For New Character Macro Alert"] = "Necesitas tener una ranura de macr
 
 --New Expansion Landing Page
 L["ModuleName NewExpansionLandingPage"] = "Resumen de la expansión";
-L["ModuleDescription NewExpansionLandingPage"] = "Una interfaz de usuario que muestra facciones, actividades semanales y bloqueos de incursiones. Puedes abrirla con:\n\n- Click en el botón de Resumen de Khaz Algar en el minimapa.\n\n- Estableciendo una tecla de acceso rápido en las opciones del juego> Atajos de teclado.";
+L["ModuleDescription NewExpansionLandingPage"] = "Una interfaz de usuario que muestra facciones, actividades semanales y bloqueos de incursiones. Puedes abrirla con:\n\n- Click en el botón del minimapa.\n\n- Estableciendo una tecla de acceso rápido en las opciones del juego> Atajos de teclado.";
 L["Abbr NewExpansionLandingPage"] = "Resumen de la expansión";
 L["Reward Available"] = "Recompensa disponible";  --As brief as possible
 L["Paragon Reward Available"] = "Recompensa de Dechado disponible";
@@ -698,6 +707,22 @@ L["Click To Switch"] = "Click para cambiar a |cffffffff%s|r";
 L["Click To Queue"] = "Click para hacer cola |cffffffff%s|r";
 L["Click to Open Format"] = "Click para abrir %s";
 L["List Is Empty"] = "La lista está vacía.";
+
+
+--ExpansionSummaryMinimapButton
+L["LandingButton Settings Title"] = "Resumen de la expansión: Botón del minimapa";
+L["LandingButton Tooltip Format"] = "Click para abir el %s.\nClick derecho para ver más opciones.";
+L["LandingButton Customize"] = "Personalizar";
+L["LandingButtonOption ShowButton"] = "Habilitar botón del minimapa";
+L["LandingButtonOption PrimaryUI"] = "Click para abrir";   --Control which UI to open on left-click
+L["LandingButtonOption PrimaryUI Tooltip"] = "Elige qué interfaz de usuario abrir al hacer click en el botón del minimapa.";
+L["LandingButtonOption SmartExpansion"] = "Selección automática de expansión";
+L["LandingButtonOption SmartExpansion Tooltip 1"] = "Cuando está activado: al hacer click en el botón del minimapa, se abre la interfaz de usuario del juego adecuada para tu ubicación actual, como por ejemplo, abrir el Informe de la curia cuando te encuentras en las Tierras Sombrías.";
+L["LandingButtonOption SmartExpansion Tooltip 2"] = "Cuando está desactivado: al hacer click en el botón del minimapa, siempre se abre %s.";
+L["LandingButtonOption ReduceSize"] = "Reducir el tamaño del botón";
+L["LandingButtonOption DarkColor"] = "Usar tema oscuro";
+L["LandingButtonOption HideWhenIdle"] = "Ocultar cuando esté inactivo";
+L["LandingButtonOption HideWhenIdle Tooltip"] = "El botón del minimapa permanecerá invisible hasta que muevas el cursor cerca de él o recibas una notificación.\n\nEsta opción entra en vigor tras cerrar la configuración.";
 
 
 --RaidCheck
