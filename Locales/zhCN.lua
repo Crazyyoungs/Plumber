@@ -680,7 +680,7 @@ L["List Is Empty"] = "暂无可显示内容";
 
 --ExpansionSummaryMinimapButton
 L["LandingButton Settings Title"] = "资料片概要：小地图按钮";
-L["LandingButton Tooltip Format"] = "左键点击以打开%。\n右键点击以显示更多选项。";
+L["LandingButton Tooltip Format"] = "左键点击以打开%s。\n右键点击以显示更多选项。";
 L["LandingButton Customize"] = "自定义";
 L["LandingButtonOption ShowButton"] = "启用小地图按钮";
 L["LandingButtonOption PrimaryUI"] = "左键点击以打开";   --Control which UI to open on left-click
