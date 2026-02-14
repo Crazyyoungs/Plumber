@@ -442,12 +442,13 @@ do  --Order Hall, RightClickMenu
             end
         end
 
-        ShowGarrisonLandingPage(garrTypeID)
+        ShowGarrisonLandingPage(garrTypeID);
 
         if garrTypeID == Enum.GarrisonType.Type_9_0_Garrison then
             local unlocked = C_CovenantCallings.AreCallingsUnlocked();
             if unlocked and frame and frame.CovenantCallings then
                 frame.CovenantCallings:Show();
+                GarrisonLandingPage:LayoutSection();
             end
         end
     end
