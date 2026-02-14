@@ -397,6 +397,9 @@ L["NameplateQuest ShowTargetProgress"] = "Exibir progresso no alvo";
 L["NameplateQuest ShowTargetProgress Tooltip"] = "Exibe o progresso do objetivo da missão na placa de identificação do seu alvo.";
 L["NameplateQuest ShowProgressOnHover"] = "Exibir progresso ao passar o mouse";
 L["NameplateQuest ShowProgressOnHover Tooltip"] = "Exibe o progresso do objetivo da missão ao passar o cursor sobre uma placa de identificação ou uma unidade.";
+L["NameplateQuest ShowProgressOnKeyPress"] = "Exibir progresso ao segurar";
+L["NameplateQuest ShowProgressOnKeyPress Tooltip Title"] = "Exibir progresso ao segurar";
+L["NameplateQuest ShowProgressOnKeyPress Tooltip Format"] = "Exibe o progresso do objetivo da missão ao segurar a tecla |cffffffff%s|r.";
 L["NameplateQuest Instruction Find Nameplate"] = "Para ajustar a posição do ícone, vá para um local com placas de identificação visíveis.";
 L["NameplateQuest Progress Format"] = "Formato do progresso";
 L["Progress Show Icon"] = "Exibir ícone";
@@ -706,6 +709,22 @@ L["Click To Switch"] = "Clique para trocar para |cffffffff%s|r";
 L["Click To Queue"] = "Clique para entrar na fila para |cffffffff%s|r";
 L["Click to Open Format"] = "Clique para abrir %s";
 L["List Is Empty"] = "Essa lista está vazia.";
+
+
+--ExpansionSummaryMinimapButton
+L["LandingButton Settings Title"] = "Sumário da Expansão: Botão do minimapa";
+L["LandingButton Tooltip Format"] = "Cliq. esquerdo para exibir o %s.\nCliq. direito para mais opções.";
+L["LandingButton Customize"] = "Personalizar";
+L["LandingButtonOption ShowButton"] = "Habilitar botão do minimapa";
+L["LandingButtonOption PrimaryUI"] = "Clique para abrir:";   --Control which UI to open on left-click
+L["LandingButtonOption PrimaryUI Tooltip"] = "Escolha qual interface abrir ao clicar no botão do minimapa.";
+L["LandingButtonOption SmartExpansion"] = "Escolher expansão automaticamente";
+L["LandingButtonOption SmartExpansion Tooltip 1"] = "Quando ativado: clicar com o botão esquerdo no botão do minimapa abre a interface adequada ao seu local atual, como abrir o Relatório do Santuário do Pacto quando você estiver em Shadowlands.";
+L["LandingButtonOption SmartExpansion Tooltip 2"] = "Quando desativado: clicar com o botão esquerdo no botão do minimapa abrirá sempre o %s.";
+L["LandingButtonOption ReduceSize"] = "Reduzir tamanho do botão";
+L["LandingButtonOption DarkColor"] = "Usar tema escuro";
+L["LandingButtonOption HideWhenIdle"] = "Ocultar quando ocioso";
+L["LandingButtonOption HideWhenIdle Tooltip"] = "O botão do minimapa permanecerá invisível até que você aproxime o cursor dele ou receba uma notificação.\n\nEssa opção entrará em vigor após fechar as configurações.";
 
 
 --RaidCheck
